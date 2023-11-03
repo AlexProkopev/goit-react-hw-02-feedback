@@ -28,6 +28,11 @@ export class App extends React.Component {
     return this.state.good + this.state.neutral + this.state.bad;
   }; // + total
 
+  hendleClickRew = (stateValue) => {
+    this.setState({ [stateValue]: this.state[stateValue] + 1 });
+  }; // + bad
+
+
   countPositiveFeedbackPercentage = () => {
     const totalFeedback = this.countTotalFeedback();
     
@@ -41,15 +46,13 @@ export class App extends React.Component {
 
   render() {
     return (
-      <SectionComponent title={"Please leave feedback"}>
+      <SectionComponent>
       
         <Feedback
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
-          hendleClickGood={this.hendleClickGood}
-          hendleClickNeutral={this.hendleClickNeutral}
-          hendleClickBad={this.hendleClickBad}
+          hendleClickRew={this.hendleClickRew}
           total={this.countTotalFeedback()}
           procentities={this.countPositiveFeedbackPercentage()}
         />

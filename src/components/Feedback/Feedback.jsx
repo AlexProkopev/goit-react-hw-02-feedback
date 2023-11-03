@@ -1,27 +1,31 @@
 import BtnFeedbackList from 'components/BtnFeedbackList/BtnFeedbackList';
 import Notification from 'components/Notification/Notification';
 import css from './Feedback.module.css';
+import SectionComponent from 'components/Section/Section';
 
 const Feedback = ({
   good,
   neutral,
   bad,
-  hendleClickGood,
-  hendleClickNeutral,
-  hendleClickBad,
   total,
   procentities,
+  hendleClickRew
 }) => {
+  const options ={
+      good: "good",
+      neutral: "neutral",
+      bad: "bad"
+  }
   return (
+    
     <>
       
         <BtnFeedbackList
-          hendleClickGood={hendleClickGood}
-          hendleClickNeutral={hendleClickNeutral}
-          hendleClickBad={hendleClickBad}
+        hendleClickRew={hendleClickRew}
+        options={options}
         />
       
-      <h2>Statistic</h2>
+      <SectionComponent title={"Statistic"}>
       {total === 0 ? (
         <Notification message={'There is no feedback'} />
       ) : (
@@ -43,6 +47,7 @@ const Feedback = ({
           </li>
         </ul>
       )}
+      </SectionComponent>
     </>
   );
 };
